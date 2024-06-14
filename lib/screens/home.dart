@@ -13,10 +13,13 @@ class Homee extends StatefulWidget {
   @override
   State<Homee> createState() => _HomeeState();
 }
-
+enum FilterList{bbc, aryNews,independent,reuters,cnn }
 class _HomeeState extends State<Homee> {
   final NewsViewModel newsView = NewsViewModel();
+  FilterList? selectedMenu;
   final format =  DateFormat('MMMM dd');
+  String name = 'bbc-news';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +29,60 @@ class _HomeeState extends State<Homee> {
           onPressed: () {},
         ),
         title: Text('NEws'),
+        actions: [ 
+          PopupMenuButton<FilterList>(
+            initialValue: selectedMenu,
+            onSelected: (FilterList item){
+              if(FilterList.bbc.name == item.name) {
+                setState(() {
+                  name = 'bbc-news';
+                });
+              }
+              if(FilterList.aryNews.name == item.name) {
+                setState(() {
+                  name = 'ary-news';
+                });
+              }
+              if(FilterList.cnn.name == item.name) {
+                setState(() {
+                  name = 'cnn';
+                });
+              }
+              if(FilterList.independent.name == item.name) {
+                setState(() {
+                  name = 'independent';
+                });
+              }
+              if(FilterList.reuters.name == item.name) {
+                setState(() {
+                  name = 'reuters';
+                });
+              }
+              
+            },
+            itemBuilder: (context)=> <PopupMenuEntry<FilterList>>[ 
+              PopupMenuItem<FilterList>( 
+                value: FilterList.bbc, 
+                child: Text('BBC News'),
+              ),
+               PopupMenuItem<FilterList>( 
+                value: FilterList.aryNews, 
+                child: Text('ARY News'),
+              ),
+               PopupMenuItem<FilterList>( 
+                value: FilterList.cnn, 
+                child: Text('CNN News'),
+              ), PopupMenuItem<FilterList>( 
+                value: FilterList.independent, 
+                child: Text('Independent News'),
+              ),
+                PopupMenuItem<FilterList>( 
+                  value: FilterList.reuters, 
+                  child: Text('Reuters News'),
+                ),
+            ]
+            )
+        ],
       ),
       body: ListView( 
         children: [ 
