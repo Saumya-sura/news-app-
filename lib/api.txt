@@ -1,3 +1,0 @@
-api : 00d425fc01ee4ccbb8b34e76d604d35a
-headlines: https://newsapi.org/v2/top-headlines?country=us&apiKey=00d425fc01ee4ccbb8b34e76d604d35a
-everything: https://newsapi.org/v2/everything?q=general&apiKey=00d425fc01ee4ccbb8b34e76d604d35a
